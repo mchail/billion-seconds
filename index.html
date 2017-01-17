@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" href="./css/bootstrap-datepicker3.min.css">
 	<link rel="stylesheet" href="./css/bootstrap-timepicker.min.css" />
+	<link rel="stylesheet" href="./css/main.css" />
 </head>
 
 <body>
@@ -25,24 +26,22 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
+				<li class="active"><a href="#">home</a></li>
+				<li><a href="https://github.com/mchail/billion-seconds" target="_blank">github</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
 
-<br> <br> <br>
+<br> <br> <br> <br>
 
 <div class="container">
-	<div>
-		<h1>When were you born?</h1>
+	<div class="well">
+		<h3>When were you born?</h3>
 		<p>
 			<input type="text" class="form-control" id="datepicker" value="May 13, 1985">
 		</p>
 		<p>
-			at
 			<div class="input-group bootstrap-timepicker timepicker">
 				<input id="timepicker" type="text" class="form-control input-small">
 				<span class="input-group-addon">
@@ -54,24 +53,36 @@
 			<select name="input-tz" id="input-tz" class="form-control"></select>
 		</p>
 	</div>
-	<div>
-		You
-		<span id="reach">
-			will reach
-		</span>
-		<input type="text" class="form-control" id="seconds" value="1,000,000,000">
-		seconds on
-	</div>
-	<div>
-		<p id='end-date'>
-			Some date
+	<div class="well">
+		<h3>
+			You
+			<span id="reach">
+				will reach
+			</span>
+		</h3>
+		<p>
+			<input type="text" class="form-control" id="seconds" value="1,000,000,000">
 		</p>
-		<select name="output-tz" id="output-tz" class="form-control"></select>
+		<h3>
+			seconds on
+		</h3>
+		<p>
+			<input type="text" class="form-control" id="end-date" value="May 13, 1985" disabled>
+		</p>
+		<p>
+			<select name="output-tz" id="output-tz" class="form-control"></select>
+		</p>
 	</div>
-	<div>
-		You are currently
-		<p id="current-seconds"></p>
-		seconds old.
+	<div class="well">
+		<h3>
+			You are currently
+		</h3>
+		<p>
+			<input type="text" class="form-control" id="current-seconds" value="1,000,000,000" disabled>
+		</p>
+		<h3>
+			seconds old.
+		</h3>
 	</div>
 </div><!-- /.container -->
 

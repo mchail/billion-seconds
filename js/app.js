@@ -38,7 +38,6 @@ $(document).ready(function() {
 	]
 
 	$('#datepicker').datepicker({
-		// startDate: '-3d'
 		startView: 'years',
 		orientation: 'bottom',
 		defaultViewDate: {
@@ -84,7 +83,7 @@ $(document).ready(function() {
 		var millis = new Date() - getStart();
 		var seconds = Math.floor(millis / 1000);
 		var secondString = seconds.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#current-seconds').text(secondString);
+		$('#current-seconds').val(secondString);
 	}
 
 	function calcParty() {
@@ -92,7 +91,7 @@ $(document).ready(function() {
 		var seconds = parseInt($('#seconds').val().replace(/,/g, ''), 10);
 		var start = getStart();
 		start.add(seconds, 'seconds');
-		$('#end-date').text(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a'));
+		$('#end-date').val(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a'));
 
 		if (new Date() - start > 0) {
 			$('#reach').text('reached');
@@ -101,7 +100,7 @@ $(document).ready(function() {
 		}
 	}
 
-	$('#datepicker').on('change', calcParty);
+	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', calcParty);
 
 	calcParty();
 	calcCurrent();
