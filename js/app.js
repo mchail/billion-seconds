@@ -100,6 +100,10 @@ $(document).ready(function() {
 		}
 	}
 
+	$('#btn-calculate').click(function() {
+		$('.output').removeClass('hide');
+	});
+
 	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', calcParty);
 
 	calcParty();
