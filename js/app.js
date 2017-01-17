@@ -91,7 +91,7 @@ $(document).ready(function() {
 		var seconds = parseInt($('#seconds').val().replace(/,/g, ''), 10);
 		var start = getStart();
 		start.add(seconds, 'seconds');
-		$('#end-date').val(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a'));
+		$('#end-date').val(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a z'));
 
 		if (new Date() - start > 0) {
 			$('#reach').text('reached');
@@ -102,6 +102,12 @@ $(document).ready(function() {
 
 	$('#btn-calculate').click(function() {
 		$('.output').removeClass('hide');
+	});
+
+	$('#change-timezone').click(function(e) {
+		e.preventDefault();
+		$(this).hide();
+		$('#end-tz-controls').removeClass('hide');
 	});
 
 	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', calcParty);
