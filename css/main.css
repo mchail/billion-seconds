@@ -3,5 +3,8 @@ h3 {
 }
 
 .form-control[disabled] {
-	background-color: #fff !important;
+	background-color: #ddd !important;
+	font-weight: bold;
+	font-size: 18px;
+	height: 45px;
 }
