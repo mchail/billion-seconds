@@ -100,12 +100,12 @@ $(document).ready(function() {
 		var millis = new Date() - getStart();
 		var seconds = Math.floor(millis / 1000);
 		var secondString = seconds.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#current-seconds').val(secondString);
+		$('#current-seconds').val(secondString + ' seconds');
 	}
 
 	function calcParty() {
 		var endTz = $('#output-tz').val();
-		var seconds = parseInt($('#seconds').val().replace(/,/g, ''), 10);
+		var seconds = parseInt($('#seconds').text().replace(/,/g, ''), 10);
 		var start = getStart();
 		start.add(seconds, 'seconds');
 		$('#end-date').val(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a z'));
@@ -146,7 +146,8 @@ $(document).ready(function() {
 		$('#end-tz-controls').removeClass('hide');
 	});
 
-	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', runCalcs);
+	$('#datepicker, #timepicker, #input-tz, #output-tz').on('change', runCalcs);
+	$('#seconds').on('blur keyup paste input', runCalcs);
 
 	calcParty();
 	calcCurrent();
