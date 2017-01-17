@@ -1,3 +1,7 @@
+.container {
+	width: 550px;
+}
+
 h3 {
 	margin-top: 0 !important;
 	font-size: 20px !important;
