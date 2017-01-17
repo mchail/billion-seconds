@@ -35,7 +35,24 @@ $(document).ready(function() {
 		'Etc/GMT-7',
 		'Etc/GMT-8',
 		'Etc/GMT-9'
-	]
+	];
+
+	// Hey, guys. Who did I miss?
+	var vips = [
+		{
+			name: 'Austin',
+			date: '5/17/1985'
+		},
+		{
+			name: 'Joe',
+			date: '5/29/1985'
+		},
+		{
+			name: 'Jordan',
+			date: '6/30/1985'
+		}
+	];
+	var vipAlert = false;
 
 	$('#datepicker').datepicker({
 		// startView: 'years',
@@ -100,6 +117,25 @@ $(document).ready(function() {
 		}
 	}
 
+	function checkVIPs() {
+		if (vipAlert) {
+			return;
+		}
+
+		var date = getStart().format('M/D/YYYY');
+		$.each(vips, function(_, vip) {
+			if (vip.date === date) {
+				alert("Yeah, " + vip.name + ". What are we doing for yours?");
+				vipAlert = true;
+			}
+		});
+	}
+
+	function runCalcs() {
+		calcParty();
+		checkVIPs();
+	}
+
 	$('#btn-calculate').click(function() {
 		$('.output').removeClass('hide');
 	});
@@ -110,7 +146,7 @@ $(document).ready(function() {
 		$('#end-tz-controls').removeClass('hide');
 	});
 
-	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', calcParty);
+	$('#datepicker, #timepicker, #input-tz, #seconds, #output-tz').on('change', runCalcs);
 
 	calcParty();
 	calcCurrent();
