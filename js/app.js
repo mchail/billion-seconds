@@ -38,7 +38,7 @@ $(document).ready(function() {
 	]
 
 	$('#datepicker').datepicker({
-		startView: 'years',
+		// startView: 'years',
 		orientation: 'bottom',
 		defaultViewDate: {
 			year: 1985,
