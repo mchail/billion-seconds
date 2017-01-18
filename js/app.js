@@ -125,7 +125,8 @@ $(document).ready(function() {
 			date: $('#datepicker').val(),
 			time: $('#timepicker').val(),
 			stz: $('#input-tz').val(),
-			etz: $('#output-tz').val()
+			etz: $('#output-tz').val(),
+			seconds: $.trim($('#seconds').text())
 		};
 
 		window.history.replaceState(
@@ -175,6 +176,7 @@ $(document).ready(function() {
 		$('#timepicker').val(params.time);
 		$('#input-tz').val(params.stz);
 		$('#output-tz').val(params.etz);
+		$('#seconds').text(params.seconds);
 
 		runCalcs();
 		showOutput();
