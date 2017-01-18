@@ -115,6 +115,39 @@ $(document).ready(function() {
 		} else {
 			$('#reach').text('will reach');
 		}
+
+		permalink();
+		gCalLink(start);
+	}
+
+	function permalink() {
+		var params = {
+			date: $('#datepicker').val(),
+			time: $('#timepicker').val(),
+			stz: $('#input-tz').val(),
+			etz: $('#output-tz').val()
+		};
+
+		window.history.replaceState(
+			undefined,
+			undefined,
+			// '#' + $.param(params)
+			'#' + btoa(JSON.stringify(params))
+		)
+	}
+
+	function gCalLink(date) {
+		var end = date.clone().add(1, 'seconds');
+		var format = 'YYYYMMDD[T]hhmmss[Z]';
+		var baseUrl = "http://www.google.com/calendar/event?";
+		var params = {
+			action: 'TEMPLATE',
+			text: 'My Billionth Second',
+			details: date.unix() + ' is going to be totally epoch.',
+			location: '',
+			dates: date.utc().format(format) + '/' + end.utc().format(format)
+		};
+		$('#gcal a').prop('href', baseUrl + $.param(params));
 	}
 
 	function checkVIPs() {
@@ -131,16 +164,37 @@ $(document).ready(function() {
 		});
 	}
 
+	function init() {
+		var hash = window.location.hash;
+		if (hash.length === 0) {
+			return;
+		}
+
+		var params =JSON.parse(atob(hash.substring(1, hash.length)));
+		$('#datepicker').val(params.date);
+		$('#timepicker').val(params.time);
+		$('#input-tz').val(params.stz);
+		$('#output-tz').val(params.etz);
+
+		runCalcs();
+		showOutput();
+	}
+
+	function showOutput() {
+		$('.output').removeClass('hide');
+	}
+
 	function runCalcs() {
 		calcParty();
 		checkVIPs();
 	}
 
 	$('#btn-calculate').click(function() {
-		$('.output').removeClass('hide');
+		calcParty();
+		showOutput();
 	});
 
-	$('#change-timezone').click(function(e) {
+	$('#change-timezone a').click(function(e) {
 		e.preventDefault();
 		$(this).hide();
 		$('#end-tz-controls').removeClass('hide');
@@ -149,7 +203,7 @@ $(document).ready(function() {
 	$('#datepicker, #timepicker, #input-tz, #output-tz').on('change', runCalcs);
 	$('#seconds').on('blur keyup paste input', runCalcs);
 
-	calcParty();
+	init();
 	calcCurrent();
 	setInterval(calcCurrent, 1000);
 });
