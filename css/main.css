@@ -7,14 +7,16 @@ h3 {
 	font-size: 20px !important;
 }
 
-.form-control[disabled] {
-	background-color: #ddd !important;
-	font-weight: bold;
-	font-size: 18px;
-	height: 45px;
-	color: #000;
-}
-
 #gcal {
 	margin-bottom: 0;
+}
+
+.calculation {
+	padding: 10px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 18px;
+  color: #000;
 }

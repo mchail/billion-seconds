@@ -100,7 +100,7 @@ $(document).ready(function() {
 		var millis = new Date() - getStart();
 		var seconds = Math.floor(millis / 1000);
 		var secondString = seconds.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$('#current-seconds').val(secondString + ' seconds');
+		$('#current-seconds').text(secondString + ' seconds');
 	}
 
 	function calcParty() {
@@ -108,7 +108,7 @@ $(document).ready(function() {
 		var seconds = parseInt($('#seconds').text().replace(/,/g, ''), 10);
 		var start = getStart();
 		start.add(seconds, 'seconds');
-		$('#end-date').val(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a z'));
+		$('#end-date').text(start.clone().tz(endTz).format('MMMM Do YYYY, h:mm:ss a z'));
 
 		if (new Date() - start > 0) {
 			$('#reach').text('reached');
