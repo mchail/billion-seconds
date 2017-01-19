@@ -139,7 +139,7 @@ $(document).ready(function() {
 
 	function gCalLink(date) {
 		var end = date.clone().add(1, 'seconds');
-		var format = 'YYYYMMDD[T]hhmmss[Z]';
+		var format = 'YYYYMMDD[T]HHmmss[Z]';
 		var baseUrl = "http://www.google.com/calendar/event?";
 		var params = {
 			action: 'TEMPLATE',
